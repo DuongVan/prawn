@@ -49,11 +49,11 @@ module Prawn
       end
 
       def insert_page(page, page_number)
-        if page_number.blank?
           pages.insert(page_number, page)
-          store.pages.data[:Kids].insert(page_number, page.dictionary)
+          if page_number.empty?
+            store.pages.data[:Kids].insert(page_number, page.dictionary)
+          end
           store.pages.data[:Count] += 1
-        end
       end
 
       def on_page_create_action(doc)
