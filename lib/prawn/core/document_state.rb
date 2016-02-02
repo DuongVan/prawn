@@ -50,7 +50,7 @@ module Prawn
 
       def insert_page(page, page_number)
           pages.insert(page_number, page)
-          if page_number.empty?
+          if (!page_number.empty?)
             store.pages.data[:Kids].insert(page_number, page.dictionary)
           end
           store.pages.data[:Count] += 1
