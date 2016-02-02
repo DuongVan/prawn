@@ -49,9 +49,11 @@ module Prawn
       end
 
       def insert_page(page, page_number)
-        pages.insert(page_number, page)
-        store.pages.data[:Kids].insert(page_number, page.dictionary)
-        store.pages.data[:Count] += 1
+          pages.insert(page_number, page)
+          store.pages.data[:Kids].insert(page_number, page.dictionary)
+          logger = Logger.new("log/page.log");
+          logger.info(page.dictionary);
+          store.pages.data[:Count] += 1
       end
 
       def on_page_create_action(doc)
